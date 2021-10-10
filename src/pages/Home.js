@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import Mdma from '../assets/mdma.png';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const Home = () => {
     return(
@@ -12,7 +13,7 @@ const Home = () => {
             </MainStatue>
             <SubscribeBlock>
                 <SubscribeTitle>
-                Subscribe to our newsletter
+                Subscribe to our news letter
 
                 </SubscribeTitle>
                 <SubscribeSub>
@@ -25,9 +26,7 @@ const Home = () => {
                     <SubscribeButton>Subscribe</SubscribeButton>
                 </EmailWrapper>
             </SubscribeBlock>
-            <Footer>
-            © 2021, shroom
-            </Footer>
+            <Footer/>
         </PageBlock>
     )    
 }
@@ -93,11 +92,4 @@ const SubscribeButton = styled.div`
     background: #1f2021;
 `;
 
-const Footer = styled.div`
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-    margin: 60rem auto 10rem auto;
-    font-size: 3rem;
-`;
 export default Home;
