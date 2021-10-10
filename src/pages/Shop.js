@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components'
-import Mdma from '../assets/mdma.png';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -9,13 +8,21 @@ const Home = () => {
         <PageBlock>
             <Header/>
             <ShopNav>
-                <NavContent></NavContent>
-                <NavContent></NavContent>
-                <NavContent></NavContent>
-                <NavContent></NavContent>
-                <NavContent></NavContent>
-                <NavContent></NavContent>
+                <NavContent>all</NavContent>
+                <NavContent>new</NavContent>
+                <NavContent>top</NavContent>
+                <NavContent>bottom</NavContent>
+                <NavContent>outerwear</NavContent>
+                <NavContent>accessories</NavContent>
             </ShopNav>
+            <ProductWrapper>
+                <Product/>
+                <Product/>
+                <Product/>
+                <Product/>
+                <Product/>
+                <Product/>
+            </ProductWrapper>
             <Footer/>
         </PageBlock>
     )    
@@ -29,10 +36,37 @@ const PageBlock = styled.div`
 `
 
 const ShopNav = styled.div`
-    margin: 40rem auto 20rem auto;
-    
+    margin: 20rem auto 20rem auto;
+    display: flex;
+    justify-content: center;
 `;
 
-const NavContent = styled.div``;
+const NavContent = styled.div`
+    padding: 5rem 10rem;
+
+
+    cursor: pointer;  
+    &:hover{
+        color: #3D3D3D;
+    }
+`;
+
+const ProductWrapper = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+`;
+
+const Product = styled.div`
+    background: #999;
+    width: 20vw;
+    max-width: 300px;
+    height: 20vw;
+    max-height: 300px;
+    margin-bottom: 3%;
+    @media screen and (max-width: 840px) {
+
+  }
+`;
 
 export default Home;
