@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // import "./fonts/pretendard/index.css";
 import Home from './pages/Home';
+import Shop from './pages/Shop';
 
 
 const styleInitializer = globalCss({
@@ -25,6 +26,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/" component={Home} exact />
+        <Route path="/shop" component={Shop} exact />
       </Switch>
     </Router>
   );

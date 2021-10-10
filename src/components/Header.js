@@ -2,19 +2,22 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 import styled from 'styled-components'
-import LogoImg from '../assets/psychedelic.png';
+import LogoImg from '../assets/mushroom.png';
 import Profileimg from '../assets/user.png';
 import CartImg from '../assets/shopping-cart.png';
 
 const Header = () => {
+
     return(
         <HeaderBlock>
-            <Logo></Logo>
+            <Link to="/" >
+                <Logo/>
+            </Link>
             <NavWrapper>
                 <NavBar>
-                    <Shop>
-                        Shop
-                    </Shop>
+                    <Link to="/shop" style={{ textDecoration: "none", color: "#000" }}>
+                        <Shop>Shop</Shop>
+                    </Link>
                     <LookBook>
                         Lookbook
                     </LookBook>
