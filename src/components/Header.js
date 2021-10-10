@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+
 import styled from 'styled-components'
 import LogoImg from '../assets/psychedelic.png';
 import Profileimg from '../assets/user.png';
@@ -20,7 +22,10 @@ const Header = () => {
                         Stocklist
                     </StockList>
                     <Trip>
+                    <a href="http://iacopoapps.appspot.com/hopalongwebgl/" style={{ textDecoration: "none", color: "#000" }}>
+
                         Trip
+                        </a>
                     </Trip>
                 </NavBar>
                 <Profile/>

@@ -41,7 +41,7 @@ const PageBlock = styled.div`
 const MainStatue = styled.div`
     width: 100rem;
     height: 100rem;
-    margin: 50rem auto;
+    margin: 40rem auto 50rem auto;
     background-image: url(${Mdma});
     background-size: contain;
     background-repeat: no-repeat;
