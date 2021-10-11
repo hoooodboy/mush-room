@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // import "./fonts/pretendard/index.css";
 import Home from './pages/Home';
 import Shop from './pages/Shop';
-
+import Login from './pages/Login';
 
 const styleInitializer = globalCss({
   html: {
@@ -27,6 +27,7 @@ function App() {
       <Switch>
         <Route path="/" component={Home} exact />
         <Route path="/shop" component={Shop} exact />
+        <Route path="/login" component={Login} exact />
       </Switch>
     </Router>
   );

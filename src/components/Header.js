@@ -31,7 +31,9 @@ const Header = () => {
                         </a>
                     </Trip>
                 </NavBar>
-                <Profile/>
+                <Link to="/login" style={{ textDecoration: "none", color: "#000" }}>
+                    <Profile/>
+                </Link>
                 <Cart/>
             </NavWrapper>
         </HeaderBlock>
