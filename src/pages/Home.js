@@ -82,7 +82,8 @@ const EmailInput = styled.input`
     padding: 3rem 5rem;
     outline: none;
     border: none;
-    width: 300px;
+    width: 280px;
+    background: #fafafa;
 `;
 
 const SubscribeButton = styled.div`

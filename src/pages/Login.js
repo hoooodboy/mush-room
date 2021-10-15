@@ -42,13 +42,20 @@ const LoginBlock = styled.div`
 const LoginBlockTitle = styled.div`
     font-size: 6rem;
     margin-bottom: 30rem;
-`;
+    -ms-user-select: none; 
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  `;
 
 const Email = styled.input`
     font-size: 5rem;
     padding: 2rem 3rem;
     width: calc(100% - 6rem);
     border: none;
+    background: #fafafa;
+    outline: none;
 `;
 
 const PWD = styled(Email)`
