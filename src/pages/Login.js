@@ -43,10 +43,10 @@ const LoginBlockTitle = styled.div`
     font-size: 6rem;
     margin-bottom: 30rem;
     -ms-user-select: none; 
-  -moz-user-select: -moz-none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
   `;
 
 const Email = styled.input`

@@ -14,12 +14,9 @@ const Home = () => {
             <SubscribeBlock>
                 <SubscribeTitle>
                 Subscribe to our news letter
-
                 </SubscribeTitle>
                 <SubscribeSub>
                 New Products, Sales, & Promos. Directly to your inbox.
-
-
                 </SubscribeSub>
                 <EmailWrapper>
                     <EmailInput placeholder="E-mail" />
@@ -62,6 +59,11 @@ const SubscribeBlock = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    -ms-user-select: none; 
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 `;
 
 const SubscribeTitle = styled.div`
@@ -91,6 +93,7 @@ const SubscribeButton = styled.div`
     font-size: 3rem;
     color: #fff;
     background: #1f2021;
+    cursor: pointer;
 `;
 
 export default Home;

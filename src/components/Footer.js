@@ -15,5 +15,10 @@ const FooterBlock = styled.div`
     text-align: center;
     margin: 60rem auto 10rem auto;
     font-size: 3rem;
+    -ms-user-select: none; 
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 `;
 export default Footer;
