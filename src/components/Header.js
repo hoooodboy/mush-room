@@ -9,30 +9,35 @@ import CartImg from '../assets/shopping-cart.png';
 const Wrapper = styled.div`
     display: flex;
     width: 100vw;
+    transition: all 0.3s;
+
     display: none;
+
     justify-content: space-between;
     ${props => props.open && css`
         display:flex;
     `}
     position: fixed;
+
     z-index: 2;
     top: 0;
+    right: 0px;
 `;
  
 const Fadein = keyframes`
   0% {
-    left: -200px;
+    right: -200px;
   }
   100% {
-    left: 0px;
+    right: 0px;
   }
 `;
 const Fadeout = keyframes`
   0% {
-    left: 0px;
+    right: 0px;
   }
   100% {
-    left: -200px;
+    right: -200px;
   }
 `;
 
@@ -46,7 +51,8 @@ const Appear = keyframes`
 `;
 
 const ModalWrapper = styled.div`
-    width: 200px;
+    width: 100%;
+    max-width: 420px;
     height: 100vh;
     background-color: #fff;
     z-index: 3;
@@ -54,11 +60,11 @@ const ModalWrapper = styled.div`
     top: 0;
     display: flex;
     justify-content: center;
-    animation: ${Fadein} 500ms ;
-    ${props => props.open && css`
-        display:flex;
-        animation: ${Fadeout} 2s;
+    animation: ${Fadein} 300ms;
+    ${props => props.close && css`
+        animation: ${Fadeout} 300ms;
     `}
+    right: 0px;
 `;
 
 
@@ -109,11 +115,17 @@ const Header = () => {
 
 
     const [open, setOpen] = useState(false);
+    const [close, setClose] = useState(true);
+
     const onToggle = () => {
         setOpen(!open)
+        setClose(!close)
     }
+    console.log(close)
+    
 
     return(
+        <>
         <HeaderBlock>
             <Link to="/" >
                 <Logo/>
@@ -141,32 +153,34 @@ const Header = () => {
                 </Link>
                 <Cart onClick={onToggle} />
             </NavWrapper>
-            <Wrapper open={open}>
-                <ModalWrapper>
-                    <CancleButton onClick={onToggle}/>
-                    <Menu2>
-                    <Link to="/" style={{textDecoration: 'none', color: "#000"}}>
-                        <MenuContent>HOME</MenuContent>    
-                    </Link>
-                    <Link to='/shop' style={{textDecoration: 'none', color: "#000"}}>
-                        <MenuContent>SHOP</MenuContent>
-                    </Link>
-                    <Link to="/about" style={{textDecoration: 'none', color: "#000"}}>
-                        <MenuContent>ABOUT</MenuContent>    
-                    </Link>
-{/*                     
-                    <Link to="/notice" style={{textDecoration: 'none', color: "#000"}}>
-                        <MenuContent>NOTICE</MenuContent>        
-                    </Link>
-                     */}
-                    <Link to="contact" style={{textDecoration: 'none', color: "#000"}}>
-                        <MenuContent>CONTACT</MenuContent>
-                    </Link>
-                    </Menu2>
-                </ModalWrapper>
-                <ModalOpacity onClick={onToggle}/>
-            </Wrapper>
+            
         </HeaderBlock>
+        <Wrapper open={open}>
+        <ModalWrapper close={close}>
+            <CancleButton onClick={onToggle}/>
+            <Menu2>
+            <Link to="/" style={{textDecoration: 'none', color: "#000"}}>
+                <MenuContent>HOME</MenuContent>    
+            </Link>
+            <Link to='/shop' style={{textDecoration: 'none', color: "#000"}}>
+                <MenuContent>SHOP</MenuContent>
+            </Link>
+            <Link to="/about" style={{textDecoration: 'none', color: "#000"}}>
+                <MenuContent>ABOUT</MenuContent>    
+            </Link>
+{/*                     
+            <Link to="/notice" style={{textDecoration: 'none', color: "#000"}}>
+                <MenuContent>NOTICE</MenuContent>        
+            </Link>
+             */}
+            <Link to="contact" style={{textDecoration: 'none', color: "#000"}}>
+                <MenuContent>CONTACT</MenuContent>
+            </Link>
+            </Menu2>
+        </ModalWrapper>
+        <ModalOpacity onClick={onToggle}/>
+    </Wrapper>
+    </>
     )    
 }
 
