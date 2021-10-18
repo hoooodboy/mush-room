@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import styled, {css, keyframes} from 'styled-components';
-import Cancle from '../assets/user2.png';import { Link } from "react-router-dom";
+import Cancle from '../assets/close.png';import { Link } from "react-router-dom";
 import LogoImg from '../assets/mushroom.png';
 import Profileimg from '../assets/user.png';
 import CartImg from '../assets/shopping-cart.png';
-
+import EmptyCartImg from '../assets/emptycart.png'
 
 const Wrapper = styled.div`
     display: flex;
@@ -50,26 +50,29 @@ const Appear = keyframes`
     }
 `;
 
-const ModalWrapper = styled.div`
+const CartWrapper = styled.div`
     width: 100%;
     max-width: 420px;
     height: 100vh;
     background-color: #fff;
     z-index: 3;
-    position: absolute;
+    position: fixed;
     top: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     animation: ${Fadein} 300ms;
     ${props => props.close && css`
         animation: ${Fadeout} 300ms;
     `}
     right: 0px;
+    color: #6b7282;
 `;
 
 
 
-const ModalOpacity = styled.div`
+const CartOpacity = styled.div`
     width: 100vw;
     height: 100vh;
     background-color: #000;
@@ -80,36 +83,42 @@ const ModalOpacity = styled.div`
 `;
 
 const CancleButton = styled.div`
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background-image: url(${Cancle});
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    position: absolute;
-    left: 20px;
-    top: 20px;
+    opacity: 0.4;
     &:hover{
-        opacity: 0.4;
+        opacity: 0.8;
     }
 `;
 
-const Menu2 = styled.div`
-    position: absolute;
-    top: 70px;
-    justify-content: center;
-    cursor: pointer;
+const CancleWrapper = styled.div`
+    display: flex;
+    padding: 7% 5%;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ebebeb;
+    color: #000;
 `;
 
-const MenuContent = styled.div`
-    margin-top: 20px;
-    font-size: 15px;
-    &:hover{
-        color: #666;
-    }
-    width: 150px;
+const CancleTitle = styled.div`
+    font-size: 5rem;
+    font-weight: 600;
 `;
 
+const EmptyCart = styled.div`
+    width: 200px;
+    height: 200px;
+    background-image: url(${EmptyCartImg});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 40%;
+`;
 
 const Header = () => {
 
@@ -143,7 +152,6 @@ const Header = () => {
                     </StockList>
                     <Trip>
                     <a href="http://iacopoapps.appspot.com/hopalongwebgl/" style={{ textDecoration: "none", color: "#000" }}>
-
                         Trip
                         </a>
                     </Trip>
@@ -153,33 +161,18 @@ const Header = () => {
                 </Link>
                 <Cart onClick={onToggle} />
             </NavWrapper>
-            
         </HeaderBlock>
         <Wrapper open={open}>
-        <ModalWrapper close={close}>
-            <CancleButton onClick={onToggle}/>
-            <Menu2>
-            <Link to="/" style={{textDecoration: 'none', color: "#000"}}>
-                <MenuContent>HOME</MenuContent>    
-            </Link>
-            <Link to='/shop' style={{textDecoration: 'none', color: "#000"}}>
-                <MenuContent>SHOP</MenuContent>
-            </Link>
-            <Link to="/about" style={{textDecoration: 'none', color: "#000"}}>
-                <MenuContent>ABOUT</MenuContent>    
-            </Link>
-{/*                     
-            <Link to="/notice" style={{textDecoration: 'none', color: "#000"}}>
-                <MenuContent>NOTICE</MenuContent>        
-            </Link>
-             */}
-            <Link to="contact" style={{textDecoration: 'none', color: "#000"}}>
-                <MenuContent>CONTACT</MenuContent>
-            </Link>
-            </Menu2>
-        </ModalWrapper>
-        <ModalOpacity onClick={onToggle}/>
-    </Wrapper>
+            <CartWrapper close={close}>
+                <CancleWrapper>
+                    <CancleTitle>Cart</CancleTitle>
+                    <CancleButton onClick={onToggle}/>
+                </CancleWrapper>
+                <EmptyCart/>
+                Cart is empty
+            </CartWrapper>
+            <CartOpacity onClick={onToggle}/>
+        </Wrapper>
     </>
     )    
 }
@@ -261,7 +254,7 @@ background-size: contain;
 `
 
 const Cart = styled(Profile)`
-margin: 0;
+    margin: 0;
     background-image: url(${CartImg});
 
 `
