@@ -67,7 +67,7 @@ const CartWrapper = styled.div`
         animation: ${Fadeout} 300ms;
     `}
     right: 0px;
-    color: #6b7282;
+    color: #868785;
 `;
 
 
@@ -89,7 +89,7 @@ const CancleButton = styled.div`
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.4;
+    opacity: 0.5;
     &:hover{
         opacity: 0.8;
     }
