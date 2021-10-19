@@ -37,6 +37,11 @@ const LoginBlock = styled.div`
     justify-content: center;
     align-items: center;
     width: 30%;
+    min-width: 300px;
+    @media screen and (max-width: 485px) {
+        width: 80%;
+  }
+    text-align: center;
 `;
 
 const LoginBlockTitle = styled.div`
