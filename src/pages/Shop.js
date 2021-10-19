@@ -39,12 +39,14 @@ const ShopNav = styled.div`
     margin: 20rem auto 20rem auto;
     display: flex;
     justify-content: center;
+    @media screen and (max-width: 840px) {
+        width: 90%;
+        flex-wrap:wrap;
+  }
 `;
 
 const NavContent = styled.div`
     padding: 5rem 10rem;
-
-
     cursor: pointer;  
     &:hover{
         color: #3D3D3D;
@@ -55,6 +57,10 @@ const ProductWrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    @media screen and (max-width: 1024px) {
+        width: 90%;
+        margin: 0 auto;
+  }
 `;
 
 const Product = styled.div`
@@ -64,8 +70,10 @@ const Product = styled.div`
     height: 20vw;
     max-height: 300px;
     margin-bottom: 3%;
-    @media screen and (max-width: 840px) {
-
+    @media screen and (max-width: 485px) {
+        width: 90vw;
+        height: 90vw;
+        margin: 5vh auto;
   }
 `;
 
