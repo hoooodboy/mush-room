@@ -57,7 +57,7 @@ const Header = () => {
                 <EmptyCart/>
                 Cart is empty
             </CartWrapper>
-            <CartOpacity onClick={onToggle}/>
+            <CartOpacity onClick={onToggle} open={open}/>
         </Wrapper>
     </>
     )    
@@ -153,14 +153,12 @@ const Cart = styled(Profile)`
     @media screen and (max-width: 1024px) {
     display: flex;
   }
-
-`
+  `;
 
 const Wrapper = styled.div`
     display: flex;
     width: 100vw;
     transition: all 0.3s;
-    display: none;
     justify-content: space-between;
     ${props => props.open && css`
         display:flex;
@@ -173,7 +171,7 @@ const Wrapper = styled.div`
  
 const Fadein = keyframes`
   0% {
-    right: -200px;
+    right: -420px;
   }
   100% {
     right: 0px;
@@ -185,7 +183,7 @@ const Fadeout = keyframes`
     right: 0px;
   }
   100% {
-    right: -200px;
+    right: -420px;
   }
 `;
 
@@ -197,6 +195,7 @@ const CartWrapper = styled.div`
     z-index: 3;
     position: fixed;
     top: 0;
+    right: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -204,8 +203,8 @@ const CartWrapper = styled.div`
     animation: ${Fadein} 300ms;
     ${props => props.close && css`
         animation: ${Fadeout} 300ms;
+        right: -420px;
     `}
-    right: 0px;
     color: #868785;
 `;
 
@@ -215,8 +214,13 @@ const CartOpacity = styled.div`
     background-color: #000;
     position: absolute;
     top: 0;
+    right: 0;
     opacity: 0.1;
     z-index: 2;
+    display: none;
+    ${props => props.open && css`
+        display: flex;
+    `}
 `;
 
 const CancleButton = styled.div`
