@@ -48,8 +48,8 @@ const Header = () => {
                 <Cart onClick={onToggle} />
             </NavWrapper>
         </HeaderBlock>
-        <Wrapper open={open}>
-            <CartWrapper close={close}>
+        <Wrapper>
+            <CartWrapper close={close} open={open}>
                 <CancleWrapper>
                     <CancleTitle>Cart</CancleTitle>
                     <CancleButton onClick={onToggle}/>
@@ -158,11 +158,7 @@ const Cart = styled(Profile)`
 const Wrapper = styled.div`
     display: flex;
     width: 100vw;
-    transition: all 0.3s;
     justify-content: space-between;
-    ${props => props.open && css`
-        display:flex;
-    `}
     position: fixed;
     z-index: 2;
     top: 0;
@@ -188,22 +184,25 @@ const Fadeout = keyframes`
 `;
 
 const CartWrapper = styled.div`
-    width: 100%;
     max-width: 420px;
+    width: 100%;
     height: 100vh;
     background-color: #fff;
     z-index: 3;
     position: fixed;
     top: 0;
-    right: 0;
+    right: 0px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    animation: ${Fadein} 300ms;
     ${props => props.close && css`
-        animation: ${Fadeout} 300ms;
-        right: -420px;
+        transform: translateX(420px);
+        transition-duration: 0.3s;  
+    `}
+    ${props => props.open && css`
+        transform: translateX(0px);
+        transition-duration: 0.3s;  
     `}
     color: #868785;
 `;
