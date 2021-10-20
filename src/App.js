@@ -1,11 +1,11 @@
+import React from 'react';
 import { globalCss } from "@stitches/react";
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import "./fonts/pretendard/index.css";
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import Login from './pages/Login';
+import NotFound from './pages/NotFound';
 
 const styleInitializer = globalCss({
   html: {
@@ -28,6 +28,7 @@ function App() {
         <Route path="/" component={Home} exact />
         <Route path="/shop" component={Shop} exact />
         <Route path="/login" component={Login} exact />
+        <Route component={NotFound} />
       </Switch>
     </Router>
   );
