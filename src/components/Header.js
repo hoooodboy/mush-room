@@ -16,12 +16,19 @@ const Header = () => {
         setOpen(!open)
         setClose(!close)
     }
-    console.log(close)
+
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [menuClose, setMenuClose] = useState(true);
+
+    const MenuToggle = () => {
+        setMenuOpen(!menuOpen)
+        setMenuClose(!menuClose)
+    }
 
     return(
         <>
         <HeaderBlock>
-            <MenuIcon/>
+            <MenuIcon onClick={MenuToggle} />
             <Link to="/" >
                 <Logo/>
             </Link>
@@ -59,6 +66,15 @@ const Header = () => {
             </CartWrapper>
             <CartOpacity onClick={onToggle} open={open}/>
         </Wrapper>
+        <MenuWrapper>
+            <MenuBlockWrapper menuClose={menuClose} menuOpen={menuOpen}>
+                <CancleWrapper>
+                    <CancleTitle>menu</CancleTitle>
+                    <CancleButton onClick={MenuToggle}/>
+                </CancleWrapper>
+            </MenuBlockWrapper>
+            <MenuOpacity onClick={MenuToggle} menuOpen={menuOpen}/>
+        </MenuWrapper>
     </>
     )    
 }
@@ -164,23 +180,15 @@ const Wrapper = styled.div`
     top: 0;
     right: 0px;
 `;
- 
-const Fadein = keyframes`
-  0% {
-    right: -420px;
-  }
-  100% {
-    right: 0px;
-  }
-`;
 
-const Fadeout = keyframes`
-  0% {
-    right: 0px;
-  }
-  100% {
-    right: -420px;
-  }
+const MenuWrapper = styled.div`
+    display: flex;
+    width: 100vw;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0px;
 `;
 
 const CartWrapper = styled.div`
@@ -207,6 +215,30 @@ const CartWrapper = styled.div`
     color: #868785;
 `;
 
+const MenuBlockWrapper = styled.div`
+    max-width: 420px;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    ${props => props.menuClose && css`
+        transform: translateX(-420px);
+        transition-duration: 0.3s;  
+    `}
+    ${props => props.menuOpen && css`
+        transform: translateX(0px);
+        transition-duration: 0.3s;  
+    `}
+    color: #868785;
+`;
+
 const CartOpacity = styled.div`
     width: 100vw;
     height: 100vh;
@@ -218,6 +250,21 @@ const CartOpacity = styled.div`
     z-index: 2;
     display: none;
     ${props => props.open && css`
+        display: flex;
+    `}
+`;
+
+const MenuOpacity = styled.div`
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0.1;
+    z-index: 2;
+    display: none;
+    ${props => props.menuOpen && css`
         display: flex;
     `}
 `;
