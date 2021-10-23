@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styled, {css, keyframes} from 'styled-components';
 import Cancle from '../assets/close.png';import { Link } from "react-router-dom";
-import LogoImg from '../assets/mushroom.png';
+import LogoImg from '../assets/mushroomlogo.gif';
 import Profileimg from '../assets/user.png';
 import CartImg from '../assets/shopping-cart.png';
 import EmptyCartImg from '../assets/emptycart.png'
@@ -72,6 +72,22 @@ const Header = () => {
                     <CancleTitle>menu</CancleTitle>
                     <CancleButton onClick={MenuToggle}/>
                 </CancleWrapper>
+                <MenuContentWrapper>
+                    <Link to="/shop" style={{ textDecoration: "none", color: "#000" }}>
+                        <MenuNav>Shop</MenuNav>
+                    </Link>
+                    <MenuNav>
+                        Lookbook
+                    </MenuNav>
+                    <MenuNav>
+                        Stocklist
+                    </MenuNav>
+                    <MenuNav>
+                    <a href="http://iacopoapps.appspot.com/hopalongwebgl/" style={{ textDecoration: "none", color: "#000" }}>
+                        Trip
+                        </a>
+                    </MenuNav>
+                </MenuContentWrapper>
             </MenuBlockWrapper>
             <MenuOpacity onClick={MenuToggle} menuOpen={menuOpen}/>
         </MenuWrapper>
@@ -314,6 +330,24 @@ const MenuIcon = styled(Profile)`
     @media screen and (max-width: 1024px) {
     display: flex;
   }
+`;
+
+const MenuContentWrapper = styled.div`
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+`;
+
+const MenuNav = styled.div`
+    color: #000;
+    margin-top: 3%;
+    font-size: 4rem;
+    &:hover{
+        color: #3D3D3D;
+        cursor: pointer;
+    }
 `;
 
 export default Header;
