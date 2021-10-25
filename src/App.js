@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Shop from './pages/Shop';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
+import LookBook from './pages/LookBook';
 
 const styleInitializer = globalCss({
   html: {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/" component={Home} exact />
         <Route path="/shop" component={Shop} exact />
         <Route path="/login" component={Login} exact />
+        <Route path="/lookbook" component={LookBook} exact />
         <Route component={NotFound} />
       </Switch>
     </Router>

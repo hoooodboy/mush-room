@@ -37,9 +37,9 @@ const Header = () => {
                     <Link to="/shop" style={{ textDecoration: "none", color: "#000" }}>
                         <Shop>Shop</Shop>
                     </Link>
-                    <LookBook>
-                        Lookbook
-                    </LookBook>
+                    <Link to="/lookbook" style={{ textDecoration: "none", color: "#000" }}>
+                        <LookBook>Lookbook</LookBook>
+                    </Link>
                     <StockList>
                         Stocklist
                     </StockList>
