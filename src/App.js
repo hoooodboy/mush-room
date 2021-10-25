@@ -7,6 +7,7 @@ import Shop from './pages/Shop';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import LookBook from './pages/LookBook';
+import StockList from './pages/StockList';
 
 const styleInitializer = globalCss({
   html: {
@@ -30,6 +31,7 @@ function App() {
         <Route path="/shop" component={Shop} exact />
         <Route path="/login" component={Login} exact />
         <Route path="/lookbook" component={LookBook} exact />
+        <Route path="/stock-list" component={StockList} exact />
         <Route component={NotFound} />
       </Switch>
     </Router>

@@ -40,9 +40,9 @@ const Header = () => {
                     <Link to="/lookbook" style={{ textDecoration: "none", color: "#000" }}>
                         <LookBook>Lookbook</LookBook>
                     </Link>
-                    <StockList>
-                        Stocklist
-                    </StockList>
+                    <Link to="/stock-list" style={{ textDecoration: "none", color: "#000" }}>
+                        <StockList>Stocklist</StockList>
+                    </Link>
                     <Trip>
                     <a href="http://iacopoapps.appspot.com/hopalongwebgl/" style={{ textDecoration: "none", color: "#000" }}>
                         Trip
@@ -76,12 +76,12 @@ const Header = () => {
                     <Link to="/shop" style={{ textDecoration: "none", color: "#000" }}>
                         <MenuNav>Shop</MenuNav>
                     </Link>
-                    <MenuNav>
-                        Lookbook
-                    </MenuNav>
-                    <MenuNav>
-                        Stocklist
-                    </MenuNav>
+                    <Link to="/lookbook" style={{ textDecoration: "none", color: "#000" }}>
+                        <MenuNav>Lookbook</MenuNav>
+                    </Link>
+                    <Link to="/stock-list" style={{ textDecoration: "none", color: "#000" }}>
+                        <MenuNav>Stocklist</MenuNav>
+                    </Link>
                     <MenuNav>
                     <a href="http://iacopoapps.appspot.com/hopalongwebgl/" style={{ textDecoration: "none", color: "#000" }}>
                         Trip
