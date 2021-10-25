@@ -31,7 +31,7 @@ const PageBlock = styled.div`
 `
 
 const ShopNav = styled.div`
-    margin: 20rem auto 20rem auto;
+    margin: 15rem auto 20rem auto;
     display: flex;
     justify-content: center;
     @media screen and (max-width: 840px) {
@@ -42,8 +42,8 @@ const ShopNav = styled.div`
 
 const NavContent = styled.div`
     padding: 5rem 10rem;
-    cursor: pointer;  
-    font-weight: 700;
+    font-weight: 600;
+    font-size: 8rem;
     &:hover{
         color: #3D3D3D;
     }
