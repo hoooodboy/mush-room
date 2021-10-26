@@ -1,6 +1,6 @@
 import React from 'react';
+import styled from 'styled-components'
 import { Link } from "react-router-dom";
-import styled from 'styled-components';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -9,15 +9,15 @@ const Home = () => {
         <PageBlock>
             <Header/>
                 <LoginBlock>
-                    <LoginBlockTitle>Login</LoginBlockTitle>
-                    <Email placeholder="E-mail"></Email>
+                    <LoginBlockTitle>CreateAccount</LoginBlockTitle>
+                    <Email placeholder="First Name"></Email>
+                    <PWD placeholder="Last Name"></PWD>
+                    <PWD placeholder="E-mail"></PWD>
                     <PWD placeholder="Password"></PWD>
-                    <SignIn>Sign In</SignIn>
-                    <Link to="/create-account" style={{textDecoration: "none", color: "#000"}}>
-                        <Option>Create Account</Option>
+                    <SignIn>Create</SignIn>
+                    <Link to="/" style={{textDecoration: "none", color: "#000"}}>
+                        <Option>Return to Store</Option>
                     </Link>
-                    <Option>Return to Store</Option>
-                    <Option>Forgot your password?</Option>
                 </LoginBlock>
             <Footer/>
         </PageBlock>

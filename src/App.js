@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import LookBook from './pages/LookBook';
 import StockList from './pages/StockList';
+import CreateAccount from './pages/CreateAccount';
 
 const styleInitializer = globalCss({
   html: {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/login" component={Login} exact />
         <Route path="/lookbook" component={LookBook} exact />
         <Route path="/stock-list" component={StockList} exact />
+        <Route path="/create-account" component={CreateAccount} exact />
         <Route component={NotFound} />
       </Switch>
     </Router>

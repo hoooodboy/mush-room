@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styled, {css, keyframes} from 'styled-components';
-import Cancle from '../assets/close.png';import { Link } from "react-router-dom";
+import Cancle from '../assets/close.png';
+import { Link } from "react-router-dom";
 import LogoImg from '../assets/mushroomlogo.gif';
 import Profileimg from '../assets/user.png';
 import CartImg from '../assets/shopping-cart.png';
