@@ -93,7 +93,7 @@ const Header = () => {
                     <Link to="/login" style={{ textDecoration: "none", color: "#868785" }}>
                         <UserNav>Login</UserNav>
                     </Link>
-                    <Link to="/login" style={{ textDecoration: "none", color: "#868785" }}>
+                    <Link to="/create-account" style={{ textDecoration: "none", color: "#868785" }}>
                         <UserNav>Create Account</UserNav>
                     </Link>
                     <UserNav>Terms of Service</UserNav>
