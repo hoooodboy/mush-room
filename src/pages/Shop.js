@@ -7,6 +7,9 @@ const Home = () => {
     return(
         <PageBlock>
             <Header/>
+            <NavTitleContent>
+                <NavTitle>Shop</NavTitle>
+            </NavTitleContent>
             <ShopNav>
                 <NavContent>all</NavContent>
                 <NavContent>new</NavContent>
@@ -36,13 +39,32 @@ const PageBlock = styled.div`
 `
 
 const ShopNav = styled.div`
-    margin: 20rem auto 20rem auto;
+    margin: 15rem auto;
     display: flex;
     justify-content: center;
     @media screen and (max-width: 840px) {
         width: 90%;
         flex-wrap:wrap;
   }
+`;
+
+const NavTitleContent = styled.div`
+    margin: 15rem auto 5rem auto;
+    display: flex;
+    justify-content: center;
+    @media screen and (max-width: 840px) {
+        width: 90%;
+        flex-wrap:wrap;
+  }`;
+
+const NavTitle = styled.div`
+    padding: 5rem 10rem;
+    font-size: 6rem;
+    -ms-user-select: none; 
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 `;
 
 const NavContent = styled.div`

@@ -42,8 +42,12 @@ const ShopNav = styled.div`
 
 const NavContent = styled.div`
     padding: 5rem 10rem;
-    font-weight: 600;
-    font-size: 8rem;
+    font-size: 6rem;
+    -ms-user-select: none; 
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
     &:hover{
         color: #3D3D3D;
     }
