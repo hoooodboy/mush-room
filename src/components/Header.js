@@ -88,6 +88,16 @@ const Header = () => {
                         </a>
                     </MenuNav>
                 </MenuContentWrapper>
+                <UserWrapper>
+                    <Link to="/login" style={{ textDecoration: "none", color: "#868785" }}>
+                        <UserNav>Login</UserNav>
+                    </Link>
+                    <Link to="/login" style={{ textDecoration: "none", color: "#868785" }}>
+                        <UserNav>Create Account</UserNav>
+                    </Link>
+                    <UserNav>Terms of Service</UserNav>
+                    <UserNav>Refund policy</UserNav>
+                </UserWrapper>
             </MenuBlockWrapper>
             <MenuOpacity onClick={MenuToggle} menuOpen={menuOpen}/>
         </MenuWrapper>
@@ -220,13 +230,12 @@ const CartWrapper = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    transition: 0.3s cubic-bezier(0,.72,.19,.99);
     ${props => props.close && css`
         transform: translateX(420px);
-        transition-duration: 0.3s;  
     `}
     ${props => props.open && css`
-        transform: translateX(0px);
-        transition-duration: 0.3s;  
+        transform: translateX(0px); 
     `}
     color: #868785;
 `;
@@ -244,13 +253,12 @@ const MenuBlockWrapper = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    transition: 0.3s cubic-bezier(0,.72,.19,.99);
     ${props => props.menuClose && css`
         transform: translateX(-420px);
-        transition-duration: 0.3s;  
     `}
     ${props => props.menuOpen && css`
-        transform: translateX(0px);
-        transition-duration: 0.3s;  
+        transform: translateX(0px); 
     `}
     color: #868785;
 `;
@@ -333,21 +341,34 @@ const MenuIcon = styled(Profile)`
 `;
 
 const MenuContentWrapper = styled.div`
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    margin-top: 10%;
+
 `;
 
 const MenuNav = styled.div`
     color: #000;
-    margin-top: 3%;
-    font-size: 4rem;
+    font-size: 6rem;
+    padding: 7% 5% 5% 5%;
+    width: 90%;
+    border-bottom: 1px solid #ebebeb;
     &:hover{
         color: #3D3D3D;
         cursor: pointer;
     }
+`;
+
+const UserWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+`;
+
+const UserNav = styled.div`
+    padding: 3% 5%;
 `;
 
 export default Header;
