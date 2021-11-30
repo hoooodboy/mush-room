@@ -15,8 +15,8 @@ const Home = () => {
         <PWD placeholder="E-mail"></PWD>
         <PWD placeholder="Password"></PWD>
         <SignIn>Create</SignIn>
-        <Link to="/" style={{ textDecoration: "none", color: "#000" }}>
-          <Option>Return to Store</Option>
+        <Link to="/login" style={{ textDecoration: "none", color: "#000" }}>
+          <Option>Return to Login</Option>
         </Link>
       </LoginBlock>
       <Footer />
