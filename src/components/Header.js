@@ -145,7 +145,6 @@ const Logo = styled.div`
   width: 10rem;
   height: 10rem;
   border-radius: 100%;
-  background: #fff;
   background-image: url(${LogoImg});
   background-size: cover;
   background-repeat: no-repeat;

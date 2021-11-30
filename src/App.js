@@ -1,14 +1,15 @@
-import React from 'react';
+import React from "react";
 import { globalCss } from "@stitches/react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import "./fonts/pretendard/index.css";
-import Home from './pages/Home';
-import Shop from './pages/Shop';
-import Login from './pages/Login';
-import NotFound from './pages/NotFound';
-import LookBook from './pages/LookBook';
-import StockList from './pages/StockList';
-import CreateAccount from './pages/CreateAccount';
+import Home from "./pages/Home";
+import Shop from "./pages/Shop";
+import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
+import LookBook from "./pages/LookBook";
+import StockList from "./pages/StockList";
+import CreateAccount from "./pages/CreateAccount";
+import ScrollTop from "./components/PageTop";
 
 const styleInitializer = globalCss({
   html: {
@@ -16,7 +17,7 @@ const styleInitializer = globalCss({
   },
   body: {
     fontSize: "4rem",
-    fontWeight: "300"
+    fontWeight: "300",
   },
   "*": {
     // fontFamily: "Pretendard",
@@ -27,6 +28,7 @@ function App() {
   styleInitializer();
   return (
     <Router>
+      <ScrollTop />
       <Switch>
         <Route path="/" component={Home} exact />
         <Route path="/shop" component={Shop} />
