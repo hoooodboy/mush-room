@@ -10,6 +10,7 @@ import LookBook from "./pages/LookBook";
 import StockList from "./pages/StockList";
 import CreateAccount from "./pages/CreateAccount";
 import ScrollTop from "./components/PageTop";
+import { ProductProvider } from "./ProductContext";
 
 const styleInitializer = globalCss({
   html: {
@@ -27,18 +28,20 @@ const styleInitializer = globalCss({
 function App() {
   styleInitializer();
   return (
-    <Router>
-      <ScrollTop />
-      <Switch>
-        <Route path="/" component={Home} exact />
-        <Route path="/shop" component={Shop} />
-        <Route path="/login" component={Login} />
-        <Route path="/lookbook" component={LookBook} />
-        <Route path="/stock-list" component={StockList} />
-        <Route path="/create-account" component={CreateAccount} />
-        <Route component={NotFound} />
-      </Switch>
-    </Router>
+    <ProductProvider>
+      <Router>
+        <ScrollTop />
+        <Switch>
+          <Route path="/" component={Home} exact />
+          <Route path="/shop" component={Shop} />
+          <Route path="/login" component={Login} />
+          <Route path="/lookbook" component={LookBook} />
+          <Route path="/stock-list" component={StockList} />
+          <Route path="/create-account" component={CreateAccount} />
+          <Route component={NotFound} />
+        </Switch>
+      </Router>
+    </ProductProvider>
   );
 }
 
