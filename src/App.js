@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import LookBook from "./pages/LookBook";
 import StockList from "./pages/StockList";
 import CreateAccount from "./pages/CreateAccount";
+import ProductDetail from "./pages/ProductDetail";
 import ScrollTop from "./components/PageTop";
 import { ProductProvider } from "./ProductContext";
 
@@ -38,6 +39,7 @@ function App() {
           <Route path="/lookbook" component={LookBook} />
           <Route path="/stock-list" component={StockList} />
           <Route path="/create-account" component={CreateAccount} />
+          <Route path="/product" component={ProductDetail} />
           <Route component={NotFound} />
         </Switch>
       </Router>

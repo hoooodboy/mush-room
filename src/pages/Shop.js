@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -16,12 +17,22 @@ const Shop = () => {
       <ShopNav></ShopNav>
       <ProductWrapper>
         {products.map((product) => (
-          <Product
-            key={product.id}
-            id={product.id}
-            text={product.text}
-            done={product.done}
-          />
+          <Link
+            to={{
+              pathname: `/product/${product.id}`,
+              props: { id: product.id },
+            }}
+            style={{ textDecoration: "none", color: "#000" }}
+          >
+            <Product
+              key={product.id}
+              id={product.id}
+              text={product.text}
+              done={product.done}
+            >
+              {product.id}
+            </Product>
+          </Link>
         ))}
       </ProductWrapper>
       <Footer />
