@@ -13,17 +13,17 @@ const Shop = () => {
       <NavTitleContent>
         <NavTitle>Shop</NavTitle>
       </NavTitleContent>
-      <ShopNav>
+      <ShopNav></ShopNav>
+      <ProductWrapper>
         {products.map((product) => (
-          <NavContent
+          <Product
             key={product.id}
             id={product.id}
             text={product.text}
             done={product.done}
           />
         ))}
-      </ShopNav>
-      <ProductWrapper></ProductWrapper>
+      </ProductWrapper>
       <Footer />
     </PageBlock>
   );

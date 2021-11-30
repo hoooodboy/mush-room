@@ -33,6 +33,22 @@ const initialProducts = [
       "https://prototype-shop.s3.ap-northeast-2.amazonaws.com/thumbnails/mockyapp.mp4",
     price: 20,
   },
+  {
+    id: 5,
+    text: "product 5",
+    description: "물건 5에대한 설명입니다.",
+    thumbnail:
+      "https://prototype-shop.s3.ap-northeast-2.amazonaws.com/thumbnails/mockyapp.mp4",
+    price: 20,
+  },
+  {
+    id: 6,
+    text: "product 6",
+    description: "물건 6에대한 설명입니다.",
+    thumbnail:
+      "https://prototype-shop.s3.ap-northeast-2.amazonaws.com/thumbnails/mockyapp.mp4",
+    price: 20,
+  },
 ];
 
 function productReducer(state, action) {
