@@ -30,14 +30,7 @@ const Shop = () => {
             }}
             style={{ textDecoration: "none", color: "#000" }}
           >
-            <Product
-              key={product.id}
-              id={product.id}
-              text={product.text}
-              done={product.done}
-            >
-              {product.id}
-            </Product>
+            <Product key={product.id} id={product.id} src={product.thumbnail} />
           </Link>
         ))}
       </ProductWrapper>
@@ -100,8 +93,7 @@ const ProductWrapper = styled.div`
   }
 `;
 
-const Product = styled.div`
-  background: #999;
+const Product = styled.img`
   width: 20vw;
   max-width: 300px;
   height: 20vw;

@@ -6,7 +6,6 @@ import { useProductState } from "../ProductContext";
 
 const ProductDetail = ({ location }) => {
   const products = useProductState();
-
   return (
     <PageBlock>
       <Header />
@@ -16,7 +15,7 @@ const ProductDetail = ({ location }) => {
       {products.map((product) =>
         product.id === location.props?.idx ? (
           <DetailWrappper>
-            <MainPhoto></MainPhoto>
+            <MainPhoto src={product.thumbnail}></MainPhoto>
 
             <InfoWrapper>
               <ProductName>{product.name}</ProductName>
@@ -87,10 +86,9 @@ const DetailWrappper = styled.div`
   }
 `;
 
-const MainPhoto = styled.div`
+const MainPhoto = styled.img`
   width: 350px;
   height: 350px;
-  background: gray;
   @media screen and (max-width: 1024px) {
     width: 80vw;
     height: 80vw;
