@@ -7,7 +7,9 @@ const ProductDetail = () => {
   return (
     <PageBlock>
       <Header />
-      <ShopNav />
+      <ShopNav>
+        <NavTitle>s</NavTitle>
+      </ShopNav>
       <DetailWrappper>
         <MainPhoto></MainPhoto>
         <InfoWrapper>
@@ -47,6 +49,20 @@ const ShopNav = styled.div`
   @media screen and (max-width: 840px) {
     width: 90%;
     flex-wrap: wrap;
+  }
+`;
+
+const NavTitle = styled.div`
+  padding: 5rem 10rem;
+  font-size: 6rem;
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  color: #fff;
+  @media screen and (max-width: 840px) {
+    display: none;
   }
 `;
 
