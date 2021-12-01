@@ -2,42 +2,60 @@ import React from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { useProductState } from "../ProductContext";
+// import { useProductState } from "../ProductContext";
+import ShopContext from "../context/ShopContext";
 
 const ProductDetail = ({ location }) => {
-  const products = useProductState();
+  //   const products = useProductState();
   return (
     <PageBlock>
       <Header />
       <ShopNav>
         <NavTitle>s</NavTitle>
       </ShopNav>
-      {products.map((product) =>
-        product.id === location.props?.idx ? (
-          <DetailWrappper>
-            <MainPhoto src={product.thumbnail}></MainPhoto>
+      <ShopContext.Consumer>
+        {(context) => (
+          <React.Fragment>
+            <div
+              cartItemNumber={context.cart.reduce((count, curItem) => {
+                return count + curItem.quantity;
+              }, 0)}
+            />
+            <main className="products">
+              <ul>
+                {context.products.map((product) =>
+                  product.id === location.props?.idx ? (
+                    <DetailWrappper>
+                      <MainPhoto src={product.thumbnail}></MainPhoto>
 
-            <InfoWrapper>
-              <ProductName>{product.name}</ProductName>
-              <Price>₩ {product.price}</Price>
-              <Description>Shipping calculated at checkout.</Description>
-              <SizeWrapper>
-                size
-                <Size>
-                  <option>S</option>
-                  <option>M</option>
-                  <option>L</option>
-                  <option>XL</option>
-                </Size>
-              </SizeWrapper>
-              <ButtonWrapper>
-                <AddCart>Add Cart</AddCart>
-                <BuyNow>Buy Now</BuyNow>
-              </ButtonWrapper>
-            </InfoWrapper>
-          </DetailWrappper>
-        ) : null
-      )}
+                      <InfoWrapper>
+                        <ProductName>{product.name}</ProductName>
+                        <Price>₩ {product.price}</Price>
+                        <Description>
+                          Shipping calculated at checkout.
+                        </Description>
+                        <SizeWrapper>
+                          size
+                          <Size>
+                            <option>S</option>
+                            <option>M</option>
+                            <option>L</option>
+                            <option>XL</option>
+                          </Size>
+                        </SizeWrapper>
+                        <ButtonWrapper>
+                          <AddCart>Add Cart</AddCart>
+                          <BuyNow>Buy Now</BuyNow>
+                        </ButtonWrapper>
+                      </InfoWrapper>
+                    </DetailWrappper>
+                  ) : null
+                )}
+              </ul>
+            </main>
+          </React.Fragment>
+        )}
+      </ShopContext.Consumer>
 
       <Footer />
     </PageBlock>

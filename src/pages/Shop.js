@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { useProductState } from "../ProductContext";
+// import { useProductState } from "../ProductContext";
+import ShopContext from "../context/ShopContext";
 
-const Shop = () => {
-  const products = useProductState();
+const Shop = (props) => {
+  // const products = useProductState();
   return (
     <PageBlock>
       <Header />
@@ -22,17 +23,36 @@ const Shop = () => {
         <NavContent>accessories</NavContent>
       </ShopNav>
       <ProductWrapper>
-        {products.map((product) => (
-          <Link
-            to={{
-              pathname: `/product/${product.id}`,
-              props: { idx: product.id },
-            }}
-            style={{ textDecoration: "none", color: "#000" }}
-          >
-            <Product key={product.id} id={product.id} src={product.thumbnail} />
-          </Link>
-        ))}
+        <ShopContext.Consumer>
+          {(context) => (
+            <React.Fragment>
+              <div
+                cartItemNumber={context.cart.reduce((count, curItem) => {
+                  return count + curItem.quantity;
+                }, 0)}
+              />
+              <main className="products">
+                <ul>
+                  {context.products.map((product) => (
+                    <Link
+                      to={{
+                        pathname: `/product/${product.id}`,
+                        props: { idx: product.id },
+                      }}
+                      style={{ textDecoration: "none", color: "#000" }}
+                    >
+                      <Product
+                        key={product.id}
+                        id={product.id}
+                        src={product.thumbnail}
+                      />
+                    </Link>
+                  ))}
+                </ul>
+              </main>
+            </React.Fragment>
+          )}
+        </ShopContext.Consumer>
       </ProductWrapper>
       <Footer />
     </PageBlock>
@@ -107,3 +127,60 @@ const Product = styled.img`
 `;
 
 export default Shop;
+
+// import React from "react";
+// // import { connect } from 'react-redux';
+
+// import ShopContext from "../context/ShopContext";
+// // import { addProductToCart } from '../store/actions';
+
+// const ProductsPage = (props) => {
+//   return (
+//     <ShopContext.Consumer>
+//       {(context) => (
+//         <React.Fragment>
+//           <div
+//             cartItemNumber={context.cart.reduce((count, curItem) => {
+//               return count + curItem.quantity;
+//             }, 0)}
+//           />
+//           <main className="products">
+//             <ul>
+//               {context.products.map((product) => (
+//                 <li key={product.id}>
+//                   <div>
+//                     <strong>{product.title}</strong> - ${product.price}
+//                   </div>
+//                   <div>
+//                     <button
+//                       onClick={context.addProductToCart.bind(this, product)}
+//                     >
+//                       Add to Cart
+//                     </button>
+//                   </div>
+//                 </li>
+//               ))}
+//             </ul>
+//           </main>
+//         </React.Fragment>
+//       )}
+//     </ShopContext.Consumer>
+//   );
+// };
+
+// // const mapStateToProps = state => {
+// //   return {
+// //     products: state.products,
+// //     cartItemCount: state.cart.reduce((count, curItem) => {
+// //       return count + curItem.quantity;
+// //     }, 0)
+// //   };
+// // };
+
+// // const mapDispatchToProps = dispatch => {
+// //   return {
+// //     addProductToCart: product => dispatch(addProductToCart(product))
+// //   };
+// // };
+
+// export default ProductsPage;
