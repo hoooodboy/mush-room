@@ -92,12 +92,17 @@ const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 300px;
+  @media screen and (max-width: 840px) {
+    width: 80vw;
+  }
 `;
 
 const ProductName = styled.div`
   font-size: 50px;
   font-weight: 400;
   @media screen and (max-width: 1024px) {
+    font-size: 40px;
     margin-top: 10vh;
   }
 `;
