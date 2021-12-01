@@ -7,7 +7,6 @@ import { useProductState } from "../ProductContext";
 
 const Shop = () => {
   const products = useProductState();
-  console.log(products);
   return (
     <PageBlock>
       <Header />
@@ -27,7 +26,7 @@ const Shop = () => {
           <Link
             to={{
               pathname: `/product/${product.id}`,
-              props: { id: product.id },
+              props: { idx: product.id },
             }}
             style={{ textDecoration: "none", color: "#000" }}
           >

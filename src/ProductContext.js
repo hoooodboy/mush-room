@@ -3,51 +3,51 @@ import React, { useReducer, createContext, useContext, useRef } from "react";
 const initialProducts = [
   {
     id: 1,
-    text: "product 1",
+    name: "product 1",
     description: "물건 1에대한 설명입니다.",
     thumbnail:
       "https://prototype-shop.s3.ap-northeast-2.amazonaws.com/thumbnails/mockyapp.mp4",
-    price: 20,
+    price: "210,000",
   },
   {
     id: 2,
-    text: "product 2",
+    name: "product 2",
     description: "물건 2에대한 설명입니다.",
     thumbnail:
       "https://prototype-shop.s3.ap-northeast-2.amazonaws.com/thumbnails/mockyapp.mp4",
-    price: 20,
+    price: "162,000",
   },
   {
     id: 3,
-    text: "product 3",
+    name: "product 3",
     description: "물건 3에대한 설명입니다.",
     thumbnail:
       "https://prototype-shop.s3.ap-northeast-2.amazonaws.com/thumbnails/mockyapp.mp4",
-    price: 20,
+    price: "39,000",
   },
   {
     id: 4,
-    text: "product 4",
+    name: "product 4",
     description: "물건 4에대한 설명입니다.",
     thumbnail:
       "https://prototype-shop.s3.ap-northeast-2.amazonaws.com/thumbnails/mockyapp.mp4",
-    price: 20,
+    price: "270,000",
   },
   {
     id: 5,
-    text: "product 5",
+    name: "product 5",
     description: "물건 5에대한 설명입니다.",
     thumbnail:
       "https://prototype-shop.s3.ap-northeast-2.amazonaws.com/thumbnails/mockyapp.mp4",
-    price: 20,
+    price: "97,000",
   },
   {
     id: 6,
-    text: "product 6",
+    name: "product 6",
     description: "물건 6에대한 설명입니다.",
     thumbnail:
       "https://prototype-shop.s3.ap-northeast-2.amazonaws.com/thumbnails/mockyapp.mp4",
-    price: 20,
+    price: "219,000",
   },
 ];
 

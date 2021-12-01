@@ -2,35 +2,44 @@ import React from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { useProductState } from "../ProductContext";
 
-const ProductDetail = () => {
+const ProductDetail = ({ location }) => {
+  const products = useProductState();
+
   return (
     <PageBlock>
       <Header />
       <ShopNav>
         <NavTitle>s</NavTitle>
       </ShopNav>
-      <DetailWrappper>
-        <MainPhoto></MainPhoto>
-        <InfoWrapper>
-          <ProductName>ProductName</ProductName>
-          <Price>₩ 280,000</Price>
-          <Description>Shipping calculated at checkout.</Description>
-          <SizeWrapper>
-            size
-            <Size>
-              <option>S</option>
-              <option>M</option>
-              <option>L</option>
-              <option>XL</option>
-            </Size>
-          </SizeWrapper>
-          <ButtonWrapper>
-            <AddCart>Add Cart</AddCart>
-            <BuyNow>Buy Now</BuyNow>
-          </ButtonWrapper>
-        </InfoWrapper>
-      </DetailWrappper>
+      {products.map((product) =>
+        product.id === location.props?.idx ? (
+          <DetailWrappper>
+            <MainPhoto></MainPhoto>
+
+            <InfoWrapper>
+              <ProductName>{product.name}</ProductName>
+              <Price>₩ {product.price}</Price>
+              <Description>Shipping calculated at checkout.</Description>
+              <SizeWrapper>
+                size
+                <Size>
+                  <option>S</option>
+                  <option>M</option>
+                  <option>L</option>
+                  <option>XL</option>
+                </Size>
+              </SizeWrapper>
+              <ButtonWrapper>
+                <AddCart>Add Cart</AddCart>
+                <BuyNow>Buy Now</BuyNow>
+              </ButtonWrapper>
+            </InfoWrapper>
+          </DetailWrappper>
+        ) : null
+      )}
+
       <Footer />
     </PageBlock>
   );
