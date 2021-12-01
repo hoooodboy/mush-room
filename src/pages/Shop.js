@@ -14,7 +14,14 @@ const Shop = () => {
       <NavTitleContent>
         <NavTitle>Shop</NavTitle>
       </NavTitleContent>
-      <ShopNav></ShopNav>
+      <ShopNav>
+        <NavContent>all</NavContent>
+        <NavContent>new</NavContent>
+        <NavContent>top</NavContent>
+        <NavContent>bottom</NavContent>
+        <NavContent>outerwear</NavContent>
+        <NavContent>accessories</NavContent>
+      </ShopNav>
       <ProductWrapper>
         {products.map((product) => (
           <Link
