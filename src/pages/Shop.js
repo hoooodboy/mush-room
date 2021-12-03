@@ -4,11 +4,9 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import usePrototypes from "../hooks/usePrototypes";
-import useActions from "../hooks/useActions";
 
 const Shop = () => {
   const prototypes = usePrototypes();
-  const { addToOrder } = useActions();
   console.log(prototypes);
   return (
     <PageBlock>
