@@ -3,44 +3,55 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import useProducts from "../hooks/useProducts";
+import useActions from "../hooks/useActions";
 
 const ProductDetail = ({ location }) => {
   const products = useProducts();
-  console.log(products);
+  const { addToOrder } = useActions();
+
+  const { id } = products;
+  const click = () => {
+    addToOrder(id);
+    console.log(id);
+  };
   return (
     <PageBlock>
       <Header />
       <ShopNav>
         <NavTitle>s</NavTitle>
       </ShopNav>
-      <ul>
-        {products.map((product) =>
-          product.id === location.props?.idx ? (
-            <DetailWrappper>
-              <MainPhoto src={product.thumbnail}></MainPhoto>
+      {products.map((product) => {
+        const { id } = product;
+        const click = () => {
+          addToOrder(id);
+        };
 
-              <InfoWrapper>
-                <ProductName>{product.name}</ProductName>
-                <Price>₩ {product.price}</Price>
-                <Description>Shipping calculated at checkout.</Description>
-                <SizeWrapper>
-                  size
-                  <Size>
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                  </Size>
-                </SizeWrapper>
-                <ButtonWrapper>
-                  <AddCart>Add Cart</AddCart>
-                  <BuyNow>Buy Now</BuyNow>
-                </ButtonWrapper>
-              </InfoWrapper>
-            </DetailWrappper>
-          ) : null
-        )}
-      </ul>
+        return product.id === location.props?.idx ? (
+          <DetailWrappper>
+            <MainPhoto src={product.thumbnail}></MainPhoto>
+
+            <InfoWrapper>
+              <ProductName>{product.name}</ProductName>
+              <Price>₩ {product.price}</Price>
+              <Description>Shipping calculated at checkout.</Description>
+              <SizeWrapper>
+                size
+                <Size>
+                  <option>S</option>
+                  <option>M</option>
+                  <option>L</option>
+                  <option>XL</option>
+                </Size>
+              </SizeWrapper>
+              <ButtonWrapper>
+                <AddCart onClick={click}>Add Cart</AddCart>
+                <BuyNow>Buy Now</BuyNow>
+              </ButtonWrapper>
+            </InfoWrapper>
+          </DetailWrappper>
+        ) : null;
+      })}
+
       <Footer />
     </PageBlock>
   );
