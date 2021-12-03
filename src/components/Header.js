@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import styled, { css, keyframes } from "styled-components";
 import Cancle from "../assets/close.png";
 import { Link } from "react-router-dom";
@@ -7,6 +7,9 @@ import Profileimg from "../assets/user.png";
 import CartImg from "../assets/shopping-cart.png";
 import EmptyCartImg from "../assets/emptycart.png";
 import MenuImg from "../assets/menu.png";
+import useOrders from "../hooks/useOrders";
+import useProducts from "../hooks/useProducts";
+import useActions from "../hooks/useActions";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -25,6 +28,21 @@ const Header = () => {
     setMenuClose(!menuClose);
   };
 
+  const orders = useOrders();
+  const products = useProducts();
+  const { remove, removeAll } = useActions();
+
+  const totalProductPrice = useMemo(() => {
+    return orders
+      .map((order) => {
+        const { id, quantity } = order;
+        const product = products.find((p) => p.id === id);
+        return product.price * quantity;
+      })
+      .reduce((l, r) => l + r, 0);
+  }, [orders, products]);
+
+  const totalProductPriceComma = totalProductPrice.toLocaleString();
   return (
     <>
       <HeaderBlock>
@@ -70,8 +88,64 @@ const Header = () => {
             <CancleTitle>Cart</CancleTitle>
             <CancleButton onClick={onToggle} />
           </CancleWrapper>
-          <EmptyCart />
-          Cart is empty
+          {orders.length === 0 ? (
+            <>
+              <EmptyCart />
+              Cart is empty
+            </>
+          ) : (
+            <div className="order">
+              <div className="body">
+                {orders.map((order) => {
+                  const { id } = order;
+                  const product = products.find((p) => p.id === id);
+                  const totalPrice = product.price * order.quantity;
+                  const totalPricecomma = totalPrice.toLocaleString();
+                  console.log(totalPricecomma);
+                  const click = () => {
+                    remove(id);
+                  };
+                  return (
+                    <div className="item" key={id}>
+                      <div className="content">
+                        <img
+                          src={product.thumbnail}
+                          style={{ width: "50px", height: "50px" }}
+                        />
+                        <p className="title">
+                          {product.name} x {order.quantity}
+                        </p>
+                      </div>
+                      <div className="action">
+                        ₩ {totalPricecomma}
+                        <button className="btn btn--link" onClick={click}>
+                          삭제
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="total">
+                <hr />
+                <div className="item">
+                  <div className="content">Total</div>
+                  <div className="action">
+                    <div className="price">₩{totalProductPriceComma}</div>
+                  </div>
+                  <button className="btn btn--link" onClick={removeAll}>
+                    전체삭제
+                  </button>
+                </div>
+                <button
+                  className="btn btn--secondary"
+                  style={{ width: "100%", marginTop: 10 }}
+                >
+                  Checkout
+                </button>
+              </div>
+            </div>
+          )}
         </CartWrapper>
         <CartOpacity onClick={onToggle} open={open} />
       </Wrapper>
