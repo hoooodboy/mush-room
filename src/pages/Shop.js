@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-// import { useProductState } from "../ProductContext";
-import ShopContext from "../context/ShopContext";
+import usePrototypes from "../hooks/usePrototypes";
+import useActions from "../hooks/useActions";
 
-const Shop = (props) => {
-  // const products = useProductState();
+const Shop = () => {
+  const prototypes = usePrototypes();
+  const { addToOrder } = useActions();
+  console.log(prototypes);
   return (
     <PageBlock>
       <Header />
@@ -23,36 +25,17 @@ const Shop = (props) => {
         <NavContent>accessories</NavContent>
       </ShopNav>
       <ProductWrapper>
-        <ShopContext.Consumer>
-          {(context) => (
-            <React.Fragment>
-              <div
-                cartItemNumber={context.cart.reduce((count, curItem) => {
-                  return count + curItem.quantity;
-                }, 0)}
-              />
-              <main className="products">
-                <ul>
-                  {context.products.map((product) => (
-                    <Link
-                      to={{
-                        pathname: `/product/${product.id}`,
-                        props: { idx: product.id },
-                      }}
-                      style={{ textDecoration: "none", color: "#000" }}
-                    >
-                      <Product
-                        key={product.id}
-                        id={product.id}
-                        src={product.thumbnail}
-                      />
-                    </Link>
-                  ))}
-                </ul>
-              </main>
-            </React.Fragment>
-          )}
-        </ShopContext.Consumer>
+        {prototypes.map((product) => (
+          <Link
+            to={{
+              pathname: `/product/${product.id}`,
+              props: { idx: product.id },
+            }}
+            style={{ textDecoration: "none", color: "#000" }}
+          >
+            <Product key={product.id} id={product.id} src={product.thumbnail} />
+          </Link>
+        ))}
       </ProductWrapper>
       <Footer />
     </PageBlock>
@@ -108,7 +91,7 @@ const ProductWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   @media screen and (max-width: 1024px) {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
   }
 `;

@@ -12,6 +12,7 @@ import CreateAccount from "./pages/CreateAccount";
 import ProductDetail from "./pages/ProductDetail";
 import ScrollTop from "./components/PageTop";
 // import { ProductProvider } from "./ProductContext";
+import AppStateProvider from "./providers/AppStateProvider";
 
 const styleInitializer = globalCss({
   html: {
@@ -30,19 +31,21 @@ function App() {
   styleInitializer();
   return (
     // <ProductProvider>
-    <Router>
-      <ScrollTop />
-      <Switch>
-        <Route path="/" component={Home} exact />
-        <Route path="/shop" component={Shop} />
-        <Route path="/login" component={Login} />
-        <Route path="/lookbook" component={LookBook} />
-        <Route path="/stock-list" component={StockList} />
-        <Route path="/create-account" component={CreateAccount} />
-        <Route path="/product" component={ProductDetail} />
-        <Route component={NotFound} />
-      </Switch>
-    </Router>
+    <AppStateProvider>
+      <Router>
+        <ScrollTop />
+        <Switch>
+          <Route path="/" component={Home} exact />
+          <Route path="/shop" component={Shop} />
+          <Route path="/login" component={Login} />
+          <Route path="/lookbook" component={LookBook} />
+          <Route path="/stock-list" component={StockList} />
+          <Route path="/create-account" component={CreateAccount} />
+          <Route path="/product" component={ProductDetail} />
+          <Route component={NotFound} />
+        </Switch>
+      </Router>
+    </AppStateProvider>
     // </ProductProvider>
   );
 }
