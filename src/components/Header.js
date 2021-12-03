@@ -32,7 +32,7 @@ const Header = () => {
   const products = useProducts();
   const { remove, removeAll } = useActions();
 
-  const totalProductPrice = useMemo(() => {
+  const subtotal = useMemo(() => {
     return orders
       .map((order) => {
         const { id, quantity } = order;
@@ -42,7 +42,7 @@ const Header = () => {
       .reduce((l, r) => l + r, 0);
   }, [orders, products]);
 
-  const totalProductPriceComma = totalProductPrice.toLocaleString();
+  const subtotalComma = subtotal.toLocaleString();
   return (
     <>
       <HeaderBlock>
@@ -94,8 +94,8 @@ const Header = () => {
               Cart is empty
             </>
           ) : (
-            <div className="order">
-              <div className="body">
+            <Items>
+              <Item>
                 {orders.map((order) => {
                   const { id } = order;
                   const product = products.find((p) => p.id === id);
@@ -106,45 +106,29 @@ const Header = () => {
                     remove(id);
                   };
                   return (
-                    <div className="item" key={id}>
-                      <div className="content">
-                        <img
-                          src={product.thumbnail}
-                          style={{ width: "50px", height: "50px" }}
-                        />
-                        <p className="title">
-                          {product.name} x {order.quantity}
-                        </p>
-                      </div>
-                      <div className="action">
-                        ₩ {totalPricecomma}
-                        <button className="btn btn--link" onClick={click}>
-                          삭제
-                        </button>
-                      </div>
-                    </div>
+                    <ProductWrapper>
+                      <Thumbnail src={product.thumbnail} />
+                      <PriceWrapper>
+                        <PriceInfo>
+                          <p className="title">
+                            {product.name} x {order.quantity}
+                          </p>
+
+                          <div className="action">₩ {totalPricecomma}</div>
+                        </PriceInfo>
+                        <DelButton onClick={click}>x</DelButton>
+                      </PriceWrapper>
+                    </ProductWrapper>
                   );
                 })}
-              </div>
-              <div className="total">
-                <hr />
-                <div className="item">
-                  <div className="content">Total</div>
-                  <div className="action">
-                    <div className="price">₩{totalProductPriceComma}</div>
-                  </div>
-                  <button className="btn btn--link" onClick={removeAll}>
-                    전체삭제
-                  </button>
-                </div>
-                <button
-                  className="btn btn--secondary"
-                  style={{ width: "100%", marginTop: 10 }}
-                >
-                  Checkout
-                </button>
-              </div>
-            </div>
+              </Item>
+
+              <SubtotalWrapper>
+                <div>Total</div>
+                <div>₩ {subtotalComma}</div>
+              </SubtotalWrapper>
+              <Checkout>Checkout</Checkout>
+            </Items>
           )}
         </CartWrapper>
         <CartOpacity onClick={onToggle} open={open} />
@@ -470,4 +454,67 @@ const UserNav = styled.div`
   padding: 3% 5%;
 `;
 
+const Items = styled.div`
+  width: 80%;
+`;
+
+const Item = styled.div`
+  width: 100%;
+  padding: 20px 0;
+  border-bottom: 1px solid #ebebeb;
+`;
+
+const ProductWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+`;
+
+const Thumbnail = styled.img`
+  width: 100px;
+  height: 100px;
+`;
+
+const PriceWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const PriceInfo = styled.div``;
+
+const DelButton = styled.div`
+  cursor: pointer;
+  margin: 0 5px 0 20px;
+  &:hover {
+    color: #f07f7f;
+  }
+`;
+
+const SubtotalWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 0 30px 0;
+  font-weight: 400;
+  color: #000;
+`;
+const TotalPriceWrapper = styled.div`
+  display: flex;
+`;
+
+const Checkout = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+  background: #000;
+  color: #fff;
+  border: 1px solid #000;
+  transition: all 0.05s ease-in-out;
+  cursor: pointer;
+  &:active {
+    transform: scale(0.97);
+  }
+`;
 export default Header;

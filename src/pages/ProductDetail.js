@@ -9,11 +9,6 @@ const ProductDetail = ({ location }) => {
   const products = useProducts();
   const { addToOrder } = useActions();
 
-  const { id } = products;
-  const click = () => {
-    addToOrder(id);
-    console.log(id);
-  };
   return (
     <PageBlock>
       <Header />
