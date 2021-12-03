@@ -8,7 +8,7 @@ import Hoodie6 from "../assets/hoodie6.png";
 import AppStateContext from "../contexts/AppStateContext";
 
 const AppStateProvider = ({ children }) => {
-  const [prototypes] = useState([
+  const [products] = useState([
     {
       id: 1,
       name: "product 1",
@@ -89,7 +89,7 @@ const AppStateProvider = ({ children }) => {
   return (
     <AppStateContext.Provider
       value={{
-        prototypes,
+        products,
         orders,
         addToOrder,
         remove,

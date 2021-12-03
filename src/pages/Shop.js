@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import usePrototypes from "../hooks/usePrototypes";
+import useProducts from "../hooks/useProducts";
 
 const Shop = () => {
-  const prototypes = usePrototypes();
-  console.log(prototypes);
+  const products = useProducts();
+  console.log(products);
   return (
     <PageBlock>
       <Header />
@@ -23,7 +23,7 @@ const Shop = () => {
         <NavContent>accessories</NavContent>
       </ShopNav>
       <ProductWrapper>
-        {prototypes.map((product) => (
+        {products.map((product) => (
           <Link
             to={{
               pathname: `/product/${product.id}`,

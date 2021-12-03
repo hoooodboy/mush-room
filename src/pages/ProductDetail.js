@@ -2,20 +2,19 @@ import React from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import usePrototypes from "../hooks/usePrototypes";
+import useProducts from "../hooks/useProducts";
 
 const ProductDetail = ({ location }) => {
-  const prototypes = usePrototypes();
-  console.log(prototypes);
+  const products = useProducts();
+  console.log(products);
   return (
     <PageBlock>
       <Header />
       <ShopNav>
         <NavTitle>s</NavTitle>
       </ShopNav>
-
       <ul>
-        {prototypes.map((product) =>
+        {products.map((product) =>
           product.id === location.props?.idx ? (
             <DetailWrappper>
               <MainPhoto src={product.thumbnail}></MainPhoto>
