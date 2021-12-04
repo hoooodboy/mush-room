@@ -24,10 +24,9 @@ const ProductDetail = ({ location }) => {
         return product.id === location.props?.idx ? (
           <DetailWrappper>
             <MainPhoto src={product.thumbnail}></MainPhoto>
-
             <InfoWrapper>
               <ProductName>{product.name}</ProductName>
-              <Price>₩ {product.price}</Price>
+              <Price>₩ {product.price.toLocaleString()}</Price>
               <Description>Shipping calculated at checkout.</Description>
               <SizeWrapper>
                 size
