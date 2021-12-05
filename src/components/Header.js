@@ -79,7 +79,11 @@ const Header = () => {
           <Link to="/login" style={{ textDecoration: "none", color: "#000" }}>
             <Profile />
           </Link>
-          <Cart onClick={onToggle} />
+          {orders.length === 0 ? (
+            <Cart onClick={onToggle} />
+          ) : (
+            <FullCart onClick={onToggle} />
+          )}
         </NavWrapper>
       </HeaderBlock>
       <Wrapper>
@@ -261,12 +265,22 @@ const Profile = styled.div`
   }
 `;
 
+const motion = keyframes`
+	0% {opacity: 0.3;}
+	100% {opacity: 1;}
+`;
+
 const Cart = styled(Profile)`
   margin: 0;
   background-image: url(${CartImg});
+
   @media screen and (max-width: 1024px) {
     display: flex;
   }
+`;
+
+const FullCart = styled(Cart)`
+  animation: ${motion} 0.5s linear 0.3s infinite alternate;
 `;
 
 const Wrapper = styled.div`
