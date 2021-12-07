@@ -1,12 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
 
 const NotFound = () => {
-    return (
-        <>
-            NotFound
-        </>
-    )
-}
+  return <>NotFound</>;
+};
 
 export default NotFound;

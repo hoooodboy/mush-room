@@ -30,7 +30,7 @@ const Header = () => {
 
   const orders = useOrders();
   const products = useProducts();
-  const { remove, removeAll } = useActions();
+  const { remove } = useActions();
 
   const subtotal = useMemo(() => {
     return orders
@@ -512,9 +512,6 @@ const SubtotalWrapper = styled.div`
   margin: 40px 0 30px 0;
   font-weight: 400;
   color: #000;
-`;
-const TotalPriceWrapper = styled.div`
-  display: flex;
 `;
 
 const Checkout = styled.div`

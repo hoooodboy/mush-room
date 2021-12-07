@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-const Home = () => {
+const Login = () => {
   return (
     <PageBlock>
       <Header />
@@ -98,4 +98,4 @@ const Option = styled.div`
   cursor: pointer;
 `;
 
-export default Home;
+export default Login;

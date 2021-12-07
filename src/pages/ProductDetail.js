@@ -15,6 +15,7 @@ const ProductDetail = ({ location }) => {
       <ShopNav>
         <NavTitle>s</NavTitle>
       </ShopNav>
+
       {products.map((product) => {
         const { id } = product;
         const click = () => {
@@ -155,8 +156,10 @@ const AddCart = styled.div`
     transform: scale(0.97);
   }
 `;
+
 const BuyNow = styled(AddCart)`
   background: #000;
   color: #fff;
 `;
+
 export default ProductDetail;
