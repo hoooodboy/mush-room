@@ -13,6 +13,7 @@ import ProductDetail from "./pages/ProductDetail";
 import ScrollTop from "./components/PageTop";
 // import { ProductProvider } from "./ProductContext";
 import AppStateProvider from "./providers/AppStateProvider";
+import RouteChangeTracker from "./hooks/RouteChangeTracker";
 
 const styleInitializer = globalCss({
   html: {
@@ -29,6 +30,8 @@ const styleInitializer = globalCss({
 
 function App() {
   styleInitializer();
+  RouteChangeTracker();
+
   return (
     // <ProductProvider>
     <AppStateProvider>
