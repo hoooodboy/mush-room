@@ -73,7 +73,6 @@ const ProductNextIdContext = createContext();
 export function ProductProvider({ children }) {
   const [state, dispatch] = useReducer(productReducer, initialProducts);
   const nextId = useRef(5);
-
   return (
     <ProductStateContext.Provider value={state}>
       <ProductDispatchContext.Provider value={dispatch}>
